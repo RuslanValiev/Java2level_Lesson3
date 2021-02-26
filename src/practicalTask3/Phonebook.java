@@ -23,6 +23,9 @@ public class Phonebook {
         phonebook.add("Ivanov", 237);
         phonebook.add("Ivanov", 239);
         phonebook.add("Sidorov", 789);
+        phonebook.add("Ivanov", 785);
+        phonebook.add("Petrov", 456);
+
 
         System.out.println(phonebook.map);
 
@@ -30,13 +33,15 @@ public class Phonebook {
 
         phonebook.get("Sidorov");
         phonebook.get("Ivanov");
+        phonebook.get("Petrov");
     }
 
     void add(String s, Integer integer) {
 
         if (map.containsKey(s)) {
-            listValue.add(integer);
-            map.put(s, listValue);
+            ArrayList<Integer> temp = map.get(s);
+            temp.add(integer);
+            map.put(s, temp);
         } else {
             listValue = new ArrayList<>();
             listValue.add(integer);
