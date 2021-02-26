@@ -11,8 +11,8 @@ import java.util.*;
  */
 public class Phonebook {
     Map<String, ArrayList<Integer>> map = new HashMap<>();
-    ArrayList<String> listKey = new ArrayList<>();
-    ArrayList<Integer> listValue =
+    ArrayList<Integer> listValue;
+
 
     public static void main(String[] args) {
         Phonebook phonebook = new Phonebook();
@@ -25,15 +25,27 @@ public class Phonebook {
         phonebook.add("Sidorov", 789);
 
         System.out.println(phonebook.map);
+
+        System.out.println();
+
+        phonebook.get("Sidorov");
+        phonebook.get("Ivanov");
     }
 
     void add(String s, Integer integer) {
 
-        list.add(integer);
-        System.out.println(list.size());
-
-        map.put(s, list);
-        System.out.println(list);
+        if (map.containsKey(s)) {
+            listValue.add(integer);
+            map.put(s, listValue);
+        } else {
+            listValue = new ArrayList<>();
+            listValue.add(integer);
+            map.put(s, listValue);
+        }
+        System.out.println(listValue);
     }
 
+    void get(String s) {
+        System.out.println(s + "'s numbers - " + map.get(s));
+    }
 }
